@@ -13,7 +13,7 @@ public class RecyclerViewController extends RecyclerView.Adapter<RecyclerViewCon
 
     public ArrayList<Mountain> listOfMountains = new ArrayList<Mountain>();
 
-    public void getMountainList(ArrayList<Mountain> mountainList){
+    public void setListOfMountains(ArrayList<Mountain> mountainList){
         listOfMountains = mountainList;
     }
 
