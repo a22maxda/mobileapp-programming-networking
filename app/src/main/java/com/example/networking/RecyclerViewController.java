@@ -1,5 +1,6 @@
 package com.example.networking;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,27 +13,29 @@ import java.util.ArrayList;
 public class RecyclerViewController extends RecyclerView.Adapter<RecyclerViewController.ViewHolder>{
 
     public ArrayList<Mountain> listOfMountains = new ArrayList<Mountain>();
+    private LayoutInflater layoutInflater;
 
-    public void setListOfMountains(ArrayList<Mountain> mountainList){
-        listOfMountains = mountainList;
+    public RecyclerViewController(Context context, ArrayList<Mountain> listOfMountains) {
+        this.layoutInflater = LayoutInflater.from(context);
+        this.listOfMountains = listOfMountains;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_main, parent, false);
+                .inflate(R.layout.recyclerviewitem, parent, false);
 
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.getTextView().setText(listOfMountains.toString());
+        holder.getTextView().setText(listOfMountains.get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listOfMountains.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
@@ -42,7 +45,7 @@ public class RecyclerViewController extends RecyclerView.Adapter<RecyclerViewCon
         public ViewHolder(View itemView) {
             super(itemView);
 
-            textView = (TextView) itemView.findViewById(R.id.MountainList);
+            textView = (TextView) itemView.findViewById(R.id.RecyclerViewItemName);
         }
 
         public TextView getTextView() {
