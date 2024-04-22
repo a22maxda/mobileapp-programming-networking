@@ -20,15 +20,20 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     private final String JSON_FILE = "mountains.json";
 
     private List<Mountain> mountains = new ArrayList<Mountain>();
+    private RecyclerView.Adapter RecyclerViewController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        RecyclerView recView = findViewById(R.id.MountainList);
+
+        recView.setAdapter(RecyclerViewController);
+
         mountains.add(new Mountain("Fuji", "Tokyo", 3776));
         mountains.add(new Mountain("Kebnekaise", "Skanderna", 2096));
-        mountains.add(new Mountain("Holland Peak", "Rockies", 2852));
+        mountains.add(new Mountain("Holland Peak", "Rocky Mountains", 2852));
 
         new JsonFile(this, this).execute(JSON_FILE);
     }
