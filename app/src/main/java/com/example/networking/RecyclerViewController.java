@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class RecyclerViewController extends RecyclerView.Adapter<RecyclerViewController.ViewHolder>{
 
-    public ArrayList<Mountain> listOfMountains = new ArrayList<Mountain>();
+    public ArrayList<Mountain> listOfMountains;
     private LayoutInflater layoutInflater;
 
     public RecyclerViewController(Context context, ArrayList<Mountain> listOfMountains) {
@@ -30,7 +30,7 @@ public class RecyclerViewController extends RecyclerView.Adapter<RecyclerViewCon
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.getTextView().setText(listOfMountains.get(position).getName());
+            holder.getTextView().setText(listOfMountains.get(position).getName());
     }
 
     @Override
