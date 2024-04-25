@@ -15,6 +15,18 @@ _Du kan ta bort all text som finns sedan tidigare_.
 
 Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
 
+För att lösa denna uppgift har först en RecyclerView skapats, och fått ett ramverk för att visa upp saker i en lista.
+Sedan har Mountain.java skapats för att hantera data som relaterar till berg i listan som visas i RecyclerView.
+
+RecyclerViewController.java har skapats för att hantera ViewHolder som hämtar RecyclerView elementet, samt att denna visar upp listan med berg.
+För att ändra mellan vad som skrivs ut kan olika metoder i Mountain.java kallas, bland annat
+Mountain.getName();
+Mountain.getLocation();
+Mountain.getHeight();
+För att skriva ut allt används toString(); som kombinerar alla dessa variabler.
+
+Sist har stöd för JSON filer lagts till, nu kan en JSON fil läggas till i projektet och läggs automatiskt till i ArrayListen "mountains" i MainActivity.java
+
 ```
 function errorCallback(error) {
     switch(error.code) {
@@ -33,7 +45,7 @@ function errorCallback(error) {
 
 Bilder läggs i samma mapp som markdown-filen.
 
-![](android.png)
+![](MountainList.png)
 
 Läs gärna:
 
