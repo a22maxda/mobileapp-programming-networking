@@ -1,6 +1,7 @@
 package com.example.networking;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 public class RecyclerViewController extends RecyclerView.Adapter<RecyclerViewController.ViewHolder>{
 
     public ArrayList<Mountain> listOfMountains;
+
+    public String file;
     private LayoutInflater layoutInflater;
 
     public RecyclerViewController(Context context, ArrayList<Mountain> listOfMountains) {
@@ -30,7 +33,7 @@ public class RecyclerViewController extends RecyclerView.Adapter<RecyclerViewCon
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.getTextView().setText(listOfMountains.get(position).getName());
+            holder.getTextView().setText(listOfMountains.get(position).toString());
     }
 
     @Override
@@ -41,6 +44,7 @@ public class RecyclerViewController extends RecyclerView.Adapter<RecyclerViewCon
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         private final TextView textView;
+
 
         public ViewHolder(View itemView) {
             super(itemView);

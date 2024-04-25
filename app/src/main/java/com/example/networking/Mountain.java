@@ -5,11 +5,20 @@ import android.view.View;
 import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Mountain {
 
+    private String ID;
     private String name;
+    private String type;
+    private String company;
     private String location;
+    private String category;
+    @SerializedName("size")
     private int height;
+    @SerializedName("cost")
+    private int HeightF;
 
     public Mountain(String name, String location, int height){
         this.name = name;
@@ -21,28 +30,16 @@ public class Mountain {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getLocation() {
         return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public int getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
     @Override
     public String toString(){
-       return name + " " + location + " " + height;
+       return name + ", " + location + ", " + height;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.networking;
 
+import android.media.midi.MidiOutputPort;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ViewGroup;
@@ -10,6 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Array;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,8 +23,10 @@ import java.util.List;
 @SuppressWarnings("FieldCanBeLocal")
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
 
-    private final String JSON_URL = "HTTPS_URL_TO_JSON_DATA_CHANGE_THIS_URL";
+    private final String JSON_URL = "https://mobprog.webug.se/json-api?login=brom";
     private final String JSON_FILE = "mountains.json";
+
+    Gson gson = new Gson();
 
     private ArrayList<Mountain> mountains = new ArrayList<>();
 
@@ -26,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //new JsonFile(this, this).execute(JSON_FILE);
 
         mountains.add(new Mountain("Fuji", "Tokyo", 3776));
         mountains.add(new Mountain("Kebnekaise", "Skanderna", 2096));
@@ -36,12 +46,10 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         recView.setLayoutManager(new LinearLayoutManager(this));
 
         recView.setAdapter(adapter);
-       // new JsonFile(this, this).execute(JSON_FILE);
     }
 
     @Override
     public void onPostExecute(String json) {
         Log.d("MainActivity", json);
     }
-
 }
