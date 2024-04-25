@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //new JsonFile(this, this).execute(JSON_FILE);
+        new JsonFile(this, this).execute(JSON_FILE);
 
         mountains.add(new Mountain("Fuji", "Tokyo", 3776));
         mountains.add(new Mountain("Kebnekaise", "Skanderna", 2096));
@@ -46,10 +46,15 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         recView.setLayoutManager(new LinearLayoutManager(this));
 
         recView.setAdapter(adapter);
+
+        adapter.notifyDataSetChanged();
     }
 
     @Override
     public void onPostExecute(String json) {
         Log.d("MainActivity", json);
+
+        Type type = new TypeToken<List<Mountain>>() {}.getType();
+        mountains = gson.fromJson(json, type);
     }
 }
